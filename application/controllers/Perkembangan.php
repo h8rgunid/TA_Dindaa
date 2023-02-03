@@ -24,6 +24,7 @@ class Perkembangan extends CI_Controller {
 		}
 		$this->data['title'] = 'Data Perkembangan Baby';
 		$this->data['list_perkembangan'] = $this->perkembangan->read();
+		$this->data['list_perkembangan_per_user'] = $this->perkembangan->read_per_user($this->session->userdata('id'));
 		$this->load->view('perkembangan/view', $this->data);
 	}
 

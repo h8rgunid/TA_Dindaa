@@ -65,72 +65,142 @@
 										</tr>
 									</thead>
 									<tbody>
-										<?php foreach ($baby_users as $baby): ?>
-											<tr>
-												<td>
-													<?= $baby->id_baby ?>
-												</td>
-												<td>
-													<?= $baby->name ?>
-												</td>
-												<td>
-													<?= $baby->nama_baby ?>
-												</td>
-												<td>
-													<?= $baby->jk ?>
-												</td>
-												<td>
-													<?= $baby->tempat_lahir ?>
-												</td>
-												<td>
-													<?= $baby->ttl ?>
-												</td>
-												<td>
-													<?= $baby->nik ?>
-												</td>
-												<?php if ((int) $_role['update'] || (int) $_role['delete']) { ?>
+										<?php if ($this->session->role == 'user'): ?>
+											<?php foreach ($baby_id as $baby): ?>
+												<tr>
 													<td>
-														<?php if ((int) $_role['update']) { ?>
-															<a href="<?= base_url('baby/edit/' . $baby->id_baby) ?>"
-																class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
-														<?php }
-														if ((int) $_role['delete']) { ?>
-															<a class="btn btn-danger btn-sm" href="#" data-toggle="modal"
-																data-target="#deleteModal-<?= $baby->id_baby ?>">
-																<i class="fa fa-trash"></i>
-															</a>
-															<div class="modal fade" id="deleteModal-<?= $baby->id_baby ?>"
-																tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-																aria-hidden="true">
-																<div class="modal-dialog" role="document">
-																	<div class="modal-content">
-																		<div class="modal-header">
-																			<h5 class="modal-title" id="logoutModalLabel">Delete?
-																			</h5>
-																			<button class="close" type="button" data-dismiss="modal"
-																				aria-label="Close">
-																				<span aria-hidden="true">×</span>
-																			</button>
-																		</div>
-																		<div class="modal-body">Are you sure you want to delete this
-																			data?</div>
-																		<div class="modal-footer">
-																			<button class="btn btn-secondary" type="button"
-																				data-dismiss="modal">Cancel</button>
-																			<a class="btn btn-primary"
-																				href="<?= base_url('baby/delete/' . $baby->id_baby) ?>">Delete</a>
+														<?= $baby->id_baby ?>
+													</td>
+													<td>
+														<?= $baby->name ?>
+													</td>
+													<td>
+														<?= $baby->nama_baby ?>
+													</td>
+													<td>
+														<?= $baby->jk ?>
+													</td>
+													<td>
+														<?= $baby->tempat_lahir ?>
+													</td>
+													<td>
+														<?= $baby->ttl ?>
+													</td>
+													<td>
+														<?= $baby->nik ?>
+													</td>
+													<?php if ((int) $_role['update'] || (int) $_role['delete']) { ?>
+														<td>
+															<?php if ((int) $_role['update']) { ?>
+																<a href="<?= base_url('baby/edit/' . $baby->id_baby) ?>"
+																	class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
+															<?php }
+															if ((int) $_role['delete']) { ?>
+																<a class="btn btn-danger btn-sm" href="#" data-toggle="modal"
+																	data-target="#deleteModal-<?= $baby->id_baby ?>">
+																	<i class="fa fa-trash"></i>
+																</a>
+																<div class="modal fade" id="deleteModal-<?= $baby->id_baby ?>"
+																	tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+																	aria-hidden="true">
+																	<div class="modal-dialog" role="document">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<h5 class="modal-title" id="logoutModalLabel">Delete?
+																				</h5>
+																				<button class="close" type="button" data-dismiss="modal"
+																					aria-label="Close">
+																					<span aria-hidden="true">×</span>
+																				</button>
+																			</div>
+																			<div class="modal-body">Are you sure you want to delete this
+																				data?</div>
+																			<div class="modal-footer">
+																				<button class="btn btn-secondary" type="button"
+																					data-dismiss="modal">Cancel</button>
+																				<a class="btn btn-primary"
+																					href="<?= base_url('baby/delete/' . $baby->id_baby) ?>">Delete</a>
+																			</div>
 																		</div>
 																	</div>
 																</div>
-															</div>
-														<?php } ?>
-														<a href="<?= base_url('baby/edit/' . $baby->id_baby) ?>"
-															class="btn btn-success btn-sm"><i class="fa fa-stethoscope"></i>
-															Take Weight</a>
+															<?php } ?>
+															<a href="<?= base_url('baby/edit/' . $baby->id_baby) ?>"
+																class="btn btn-success btn-sm"><i class="fa fa-stethoscope"></i>
+																Take Weight</a>
+														</td>
+													<?php } ?>
+												</tr>
+											<?php endforeach ?>
+										<?php endif ?>
+										<?php if ($this->session->role == 'admin'): ?>
+											<?php foreach ($baby_users as $baby): ?>
+												<tr>
+													<td>
+														<?= $baby->id_baby ?>
 													</td>
-												<?php } ?>
-											</tr>
-										<?php endforeach ?>
+													<td>
+														<?= $baby->name ?>
+													</td>
+													<td>
+														<?= $baby->nama_baby ?>
+													</td>
+													<td>
+														<?= $baby->jk ?>
+													</td>
+													<td>
+														<?= $baby->tempat_lahir ?>
+													</td>
+													<td>
+														<?= $baby->ttl ?>
+													</td>
+													<td>
+														<?= $baby->nik ?>
+													</td>
+													<?php if ((int) $_role['update'] || (int) $_role['delete']) { ?>
+														<td>
+															<?php if ((int) $_role['update']) { ?>
+																<a href="<?= base_url('baby/edit/' . $baby->id_baby) ?>"
+																	class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
+															<?php }
+															if ((int) $_role['delete']) { ?>
+																<a class="btn btn-danger btn-sm" href="#" data-toggle="modal"
+																	data-target="#deleteModal-<?= $baby->id_baby ?>">
+																	<i class="fa fa-trash"></i>
+																</a>
+																<div class="modal fade" id="deleteModal-<?= $baby->id_baby ?>"
+																	tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+																	aria-hidden="true">
+																	<div class="modal-dialog" role="document">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<h5 class="modal-title" id="logoutModalLabel">Delete?
+																				</h5>
+																				<button class="close" type="button" data-dismiss="modal"
+																					aria-label="Close">
+																					<span aria-hidden="true">×</span>
+																				</button>
+																			</div>
+																			<div class="modal-body">Are you sure you want to delete this
+																				data?</div>
+																			<div class="modal-footer">
+																				<button class="btn btn-secondary" type="button"
+																					data-dismiss="modal">Cancel</button>
+																				<a class="btn btn-primary"
+																					href="<?= base_url('baby/delete/' . $baby->id_baby) ?>">Delete</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															<?php } ?>
+															<a href="<?= base_url('baby/edit/' . $baby->id_baby) ?>"
+																class="btn btn-success btn-sm"><i class="fa fa-stethoscope"></i>
+																Take Weight</a>
+														</td>
+													<?php } ?>
+												</tr>
+											<?php endforeach ?>
+										</td <?php endif; ?>
 									</tbody>
 								</table>
 							</div>

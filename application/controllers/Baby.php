@@ -24,6 +24,7 @@ class Baby extends CI_Controller {
 		$this->data['title'] = 'Data Baby';
 		$this->data['list_baby'] = $this->baby->read();
 		$this->data['baby_users'] = $this->baby->read_by_user();
+		$this->data['baby_id'] = $this->baby->read_per_id($this->session->userdata('id'));
 
 		$this->load->view('baby/view', $this->data);
 	}
@@ -39,6 +40,9 @@ class Baby extends CI_Controller {
 		$this->data['baby_users'] = $this->baby->group_by_user();
 
 		$this->form_validation->set_rules('nama_baby', 'Baby Name', 'required');
+		$this->form_validation->set_rules('nik', 'Nik', 'required|is_unique[baby.nik]' ,[
+			'is_unique' => 'This Baby NIK has already registered!'
+		]);
 		$this->form_validation->set_error_delimiters('', '');
 
 		if ($this->form_validation->run() == false) {
@@ -68,7 +72,7 @@ class Baby extends CI_Controller {
 			$this->session->set_flashdata('error', 'This Baby is not allowed to change data!');
 			redirect('dashboard');
 		}
-
+		
 		$this->data['title'] = 'Edit Baby';
 		$this->data['baby'] = $this->baby->read_by_id($id);
 

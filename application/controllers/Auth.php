@@ -28,8 +28,8 @@ class Auth extends CI_Controller {
 
 	public function regis()
 	{
-		$this->form_validation->set_rules('email', 'Email', 'required', [
-			'required' => 'Email Pengguna Wajib di isi'
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
+			'is_unique' => 'This email has already registered!'
 		]);
 		$this->form_validation->set_rules('name', 'Nama Lengkap', 'required', [
 			'required' => 'Nama Pengguna Wajib di isi'
@@ -48,7 +48,7 @@ class Auth extends CI_Controller {
 			$data = [
 				'email' => $this->input->post('email'),
 				'name' => $this->input->post('name'), 
-				'role_id' => $this->input->post('role_id'),
+				'role_id' => 2,
 				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 				
 			];
@@ -62,8 +62,9 @@ class Auth extends CI_Controller {
 	{
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
+		$role = $this->input->post('role');
 
-		$user = $this->users->read_by_email($email);
+		$user = $this->users->read_by_email($email, $role);
 
 		if ($user) {
 

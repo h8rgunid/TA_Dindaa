@@ -52,14 +52,7 @@ class Users extends CI_Controller {
 				'name' => $this->input->post('name'),
 				'email' => $this->input->post('email'),
 				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-				'role_id' => $this->input->post('role'),
-				'd1' => $this->input->post('d1') == 'on' ? '1':'0',
-				'd2' => $this->input->post('d2') == 'on' ? '1':'0',
-				'd3' => $this->input->post('d3') == 'on' ? '1':'0',
-				'd4' => $this->input->post('d4') == 'on' ? '1':'0',
-				'd5' => $this->input->post('d5') == 'on' ? '1':'0',
-				'd6' => $this->input->post('d6') == 'on' ? '1':'0',
-				'd7' => $this->input->post('d7') == 'on' ? '1':'0',
+				'role_id' => $this->input->post('role')
 			];
 
 			if($this->users->create($data)){
@@ -93,14 +86,7 @@ class Users extends CI_Controller {
 			$data = [
 				'name' => $this->input->post('name'),
 				'email' => $this->input->post('email'),
-				'role_id' => $this->input->post('role'),
-				'd1' => $this->input->post('d1') == 'on' ? '1':'0',
-				'd2' => $this->input->post('d2') == 'on' ? '1':'0',
-				'd3' => $this->input->post('d3') == 'on' ? '1':'0',
-				'd4' => $this->input->post('d4') == 'on' ? '1':'0',
-				'd5' => $this->input->post('d5') == 'on' ? '1':'0',
-				'd6' => $this->input->post('d6') == 'on' ? '1':'0',
-				'd7' => $this->input->post('d7') == 'on' ? '1':'0',
+				'role_id' => $this->input->post('role')
 			];
 
 			$password = $this->input->post('password');

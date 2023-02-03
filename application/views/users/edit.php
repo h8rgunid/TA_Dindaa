@@ -63,7 +63,7 @@
 											<input type="password" name="password" placeholder="Enter your password" autocomplete="off"  class="form-control">
 										</div>
 									</div>
-									<div class="form-row">
+									<!-- <div class="form-row">
 										<div class="form-group col-md-6">
 											<label for="password"><strong>Day of Work (Week)</strong></label>
 											<div class="form-check pl-3">
@@ -80,7 +80,7 @@
 												</table>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									<hr>
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>

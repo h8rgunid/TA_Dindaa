@@ -42,55 +42,105 @@
 										</div>
 									<?php endif ?>
 									<form action="<?= base_url('baby/add') ?>" id="form-add" method="POST">
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label for="nama_baby"><strong>Baby Name</strong></label>
-												<input type="text" name="nama_baby" placeholder="Enter baby name"
-													autocomplete="off" class="form-control" required>
-											</div>
-											<div class="form-group col-md-6">
-												<label for="jk"><strong>Gender</strong></label>
-												<select class="form-control " id="jk" name="jk" required>
-													<option value="">No Select</option>
-													<option value="l">Laki-Laki</option>
-													<option value="p">Perempuan</option>
-												</select>
-											</div>
-											<div class="form-group col-md-6">
-												<label for="tempat_lahir"><strong>Place of Birth </strong></label>
-												<input type="text" name="tempat_lahir"
-													placeholder="Enter baby place of Birth" autocomplete="off"
-													class="form-control" required>
-											</div>
-											<div class="form-group col-md-6">
-												<label for="ttl"><strong>Date of Birth</strong></label>
-												<div>
-													<input type="date" name="ttl" value="<?php echo date('Y-m-d'); ?>"
-														required />
+										<?php if ($this->session->role == 'admin'): ?>
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="nama_baby"><strong>Baby Name</strong></label>
+													<input type="text" name="nama_baby" placeholder="Enter baby name"
+														autocomplete="off" class="form-control" required>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="jk"><strong>Gender</strong></label>
+													<select class="form-control " id="jk" name="jk" required>
+														<option value="">No Select</option>
+														<option value="l">Laki-Laki</option>
+														<option value="p">Perempuan</option>
+													</select>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="tempat_lahir"><strong>Place of Birth </strong></label>
+													<input type="text" name="tempat_lahir"
+														placeholder="Enter baby place of Birth" autocomplete="off"
+														class="form-control" required>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="ttl"><strong>Date of Birth</strong></label>
+													<div>
+														<input type="date" name="ttl" value="<?php echo date('Y-m-d'); ?>"
+															required />
+													</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nik"><strong>NIK</strong></label>
+													<input type="text" name="nik" placeholder="Enter baby NIK"
+														autocomplete="off" class="form-control" required>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="id"><strong>Parent</strong></label>
+													<select class="form-control " id="id" name="id" required>
+														<option value="">No Select</option>
+														<?php foreach ($baby_users as $parent): ?>
+															<option value="<?php echo $parent->id; ?>"><?php echo $parent->name; ?></option>
+														<?php endforeach; ?>
+													</select>
 												</div>
 											</div>
-											<div class="form-group col-md-6">
-												<label for="nik"><strong>NIK</strong></label>
-												<input type="text" name="nik" placeholder="Enter baby NIK"
-													autocomplete="off" class="form-control" required>
+											<hr>
+											<div class="form-group">
+												<button type="submit" class="btn btn-primary"><i
+														class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
+												<button type="reset" class="btn btn-danger"><i
+														class="fa fa-times"></i>&nbsp;&nbsp;Reset</button>
 											</div>
-											<div class="form-group col-md-6">
-												<label for="id"><strong>Parent</strong></label>
-												<select class="form-control " id="id" name="id" required>
-													<option value="">No Select</option>
-													<?php foreach ($baby_users as $parent): ?>
-														<option value="<?php echo $parent->id; ?>"><?php echo $parent->name; ?></option>
-													<?php endforeach; ?>
-												</select>
+										<? endif ?>
+										<?php if ($this->session->role == 'user'): ?>
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="nama_baby"><strong>Baby Name</strong></label>
+													<input type="text" name="nama_baby" placeholder="Enter baby name"
+														autocomplete="off" class="form-control" required>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="jk"><strong>Gender</strong></label>
+													<select class="form-control " id="jk" name="jk" required>
+														<option value="">No Select</option>
+														<option value="l">Laki-Laki</option>
+														<option value="p">Perempuan</option>
+													</select>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="tempat_lahir"><strong>Place of Birth </strong></label>
+													<input type="text" name="tempat_lahir"
+														placeholder="Enter baby place of Birth" autocomplete="off"
+														class="form-control" required>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="ttl"><strong>Date of Birth</strong></label>
+													<div>
+														<input type="date" name="ttl" value="<?php echo date('Y-m-d'); ?>"
+															required />
+													</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nik"><strong>NIK</strong></label>
+													<input type="text" name="nik" placeholder="Enter baby NIK"
+														autocomplete="off" class="form-control" required>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="id"><strong>Parent</strong></label>
+													<select class="form-control " id="id" name="id">
+														<option value="<?php $this->session->userdata('name') ?>"><?php echo $this->session->userdata('name') ?></option>
+													</select>
+												</div>
 											</div>
-										</div>
-										<hr>
-										<div class="form-group">
-											<button type="submit" class="btn btn-primary"><i
-													class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
-											<button type="reset" class="btn btn-danger"><i
-													class="fa fa-times"></i>&nbsp;&nbsp;Reset</button>
-										</div>
+											<hr>
+											<div class="form-group">
+												<button type="submit" class="btn btn-primary"><i
+														class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
+												<button type="reset" class="btn btn-danger"><i
+														class="fa fa-times"></i>&nbsp;&nbsp;Reset</button>
+											</div>
+										<? endif ?>
 									</form>
 								</div>
 							</div>

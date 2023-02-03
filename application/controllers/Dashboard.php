@@ -23,7 +23,10 @@ class Dashboard extends CI_Controller {
 			$this->data['beratmax'] = $this->perkembangan->beratmax();
 			$this->data['beratavg'] = $this->perkembangan->beratavg();
 		} else {
-			$this->data['count_menimbang'] = $this->perkembangan->count();
+			$this->data['count_baby'] = $this->baby->count_per_id($this->session->userdata('id'));
+			$this->data['count_menimbang'] = $this->perkembangan->count_per_id($this->session->userdata('id'));
+			$this->data['beratmax'] = $this->perkembangan->beratmax_per_id($this->session->userdata('id'));
+			$this->data['beratavg'] = $this->perkembangan->beratavg_per_id($this->session->userdata('id'));
 		}
 
 

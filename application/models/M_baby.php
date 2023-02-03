@@ -17,6 +17,12 @@ class M_baby extends CI_Model{
 		$query = 'SELECT * FROM `baby` b, users u WHERE b.id_user = u.id group by u.id';
 		return $this->db->query($query)->result();
 	}
+	public function read_per_id($id){
+		$query = 'SELECT * FROM `baby` ,users where id_user = id and id = "'.$id.'"';
+
+		return $this->db->query($query)->result();
+	}
+
 	public function read_by_id($id){
 		$this->db->where('id_baby', $id);
 		return $this->db->get($this->_table_baby)->row();
@@ -37,6 +43,10 @@ class M_baby extends CI_Model{
 	}
 
 	public function count(){
+		return $this->db->get($this->_table_baby)->num_rows();
+	}
+	public function count_per_id($id){
+		$this->db->where('id_user', $id);
 		return $this->db->get($this->_table_baby)->num_rows();
 	}
 	

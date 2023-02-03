@@ -9,6 +9,10 @@ class M_perkembangan extends CI_Model{
 		$query = 'SELECT * FROM users s,baby b, perkembangan p INNER JOIN (SELECT max(tanggal) as max_tanggal FROM perkembangan GROUP by id_bayi) p1 on p.tanggal = p1.max_tanggal where b.id_baby = p.id_bayi group by id_baby';
 		return $this->db->query($query)->result();
 	}
+	public function read_per_user($id){
+		$query = 'SELECT * FROM users s,baby b, perkembangan p INNER JOIN (SELECT max(tanggal) as max_tanggal FROM perkembangan GROUP by id_bayi) p1 on p.tanggal = p1.max_tanggal where b.id_baby = p.id_bayi and s.id = b.id_user and s.id = "'.$id.'" group by id_bayi';
+		return $this->db->query($query)->result();
+	}
 
 	public function read_by_id($id){
 		$query = "SELECT * FROM baby b,perkembangan p where b.id_baby = p.id_bayi and id_bayi =".$id."";
@@ -55,5 +59,20 @@ class M_perkembangan extends CI_Model{
 	public function beratavg(){
 		$this->db->select_avg('berat_bayi');
 		return $this->db->get('perkembangan')->result(); 
+	}
+
+	public function count_per_id($id){
+		$query = "SELECT * FROM users, baby, perkembangan where id = id_user and id_bayi = id_baby and id = '".$id."' GROUP by id_bayi";
+		return $this->db->query($query)->num_rows();
+	}
+
+	public function beratmax_per_id($id){
+		$query = "SELECT max(berat_bayi) as berat_bayi FROM users, baby, perkembangan where id = id_user and id_bayi = id_baby and id = '".$id."'";
+		return $this->db->query($query)->result();
+	}
+
+	public function beratavg_per_id($id){
+		$query = "SELECT avg(berat_bayi) as berat_bayi FROM users, baby, perkembangan where id = id_user and id_bayi = id_baby and id = '".$id."'";
+		return $this->db->query($query)->result();
 	}
 }

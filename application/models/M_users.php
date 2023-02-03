@@ -17,10 +17,11 @@ class M_users extends CI_Model{
 		return $this->db->get($this->_table . ' u')->row();
 	}
 
-	public function read_by_email($email){
+	public function read_by_email($email, $role){
 		$this->db->select('u.*, r.name role_name, r.id role_id');
 		$this->db->join($this->_table_role . ' r', 'u.role_id = r.id');
 		$this->db->where('u.email', $email);
+		$this->db->where('u.role_id', $role);
 		return $this->db->get($this->_table . ' u')->row();
 	}
 
