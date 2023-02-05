@@ -75,4 +75,14 @@ class M_perkembangan extends CI_Model{
 		$query = "SELECT avg(berat_bayi) as berat_bayi FROM users, baby, perkembangan where id = id_user and id_bayi = id_baby and id = '".$id."'";
 		return $this->db->query($query)->result();
 	}
+
+	public function berat_per_bulan(){
+		$query = "select date_format(tanggal, '%M %Y') as ptanggal, tanggal as otanggal, sum(berat_bayi) as pberat from perkembangan, users, baby where id = id_user and id_baby = id_bayi group by date_format(tanggal, '%M %Y') ORDER by otanggal ASC";
+		return $this->db->query($query)->result();
+	}
+
+	public function berat_per_bulan_id($id){
+		$query = "select date_format(tanggal, '%M %Y') as ptanggal, tanggal as otanggal, sum(berat_bayi) as pberat ,nama_baby , berat_bayi from perkembangan, users, baby where id = id_user and id_baby = id_bayi and id_baby = '".$id."'group by date_format(tanggal, '%M %Y') ORDER by otanggal ASC";
+		return $this->db->query($query)->result();
+	}
 }

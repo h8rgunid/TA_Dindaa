@@ -49,6 +49,16 @@ class M_baby extends CI_Model{
 		$this->db->where('id_user', $id);
 		return $this->db->get($this->_table_baby)->num_rows();
 	}
+
+	public function count_id($id){
+		$query = "SELECT * FROM users, baby where id = id_user and id = '".$id."'";
+		return $this->db->query($query)->result();
+	}
+	
+	public function readId($id){
+		$query = "SELECT id_baby FROM users, baby where id = id_user and id = '".$id."'";
+		return $this->db->query($query)->result_array();
+	}
 	
 	// public function count_by_email($id){
 	// 	$this->db->select('a.*, u.name user_name');
