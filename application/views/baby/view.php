@@ -193,14 +193,39 @@
 																	</div>
 																</div>
 															<?php } ?>
-															<a href="<?= base_url('baby/edit/' . $baby->id_baby) ?>"
-																class="btn btn-success btn-sm"><i class="fa fa-stethoscope"></i>
-																Take Weight</a>
+															<a id="setlc-<?= $baby->id_baby ?>" data-toggle="modal"
+																data-target="#setlcModal-<?= $baby->id_baby ?>" data-backdrop="static"
+																data-keyboard="false"
+																onclick="sendId(<?= $baby->id_baby?>)"
+																class="btn btn-outline-info btn-sm mr-3"><i
+																	class="fa fa-fw fa-fingerprint"></i> Take Weight</a>
+															<div class="modal fade" id="setlcModal-<?= $baby->id_baby ?>" tabindex="-1"
+																role="dialog" aria-hidden="true">
+																<div class="modal-dialog" role="document">
+																	<div class="modal-content">
+																		<div class="modal-header">
+																			<h5 class="modal-title" id="logoutModalLabel">Reload
+																				Your Page</h5>
+																		</div>
+																		<div class="modal-body">Taking Weight in
+																			MCU...<br>Wait 5 seconds to reload...</div>
+																		<div class="modal-footer">
+																			<button id="btn_enroll_dismiss-<?= $baby->id_baby ?>"
+																				class="btn btn-secondary" type="button"
+																				data-dismiss="modal" disabled>Enrolling...</button>
+																			<button id="btn_enroll-<?= $baby->id_baby?>"
+																				class="btn btn-primary" type="button"
+																				onclick="window.location.href='<?= base_url('perkembangan') ?>'"
+																				disabled>Enrolling...</button>
+																		</div>
+																	</div>
+																</div>
+															</div>
 														</td>
 													<?php } ?>
 												</tr>
 											<?php endforeach ?>
-										</td <?php endif; ?>
+											</td <?php endif; ?>
 									</tbody>
 								</table>
 							</div>

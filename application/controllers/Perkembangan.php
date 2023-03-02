@@ -1,8 +1,10 @@
 <?php
 
-class Perkembangan extends CI_Controller {
+class Perkembangan extends CI_Controller
+{
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		is_logged_in();
 
@@ -17,8 +19,9 @@ class Perkembangan extends CI_Controller {
 		$this->data['_role_menu'] = $this->access->get_access_by_role($this->session->role);
 	}
 
-	public function index(){
-		if(!(int)$this->data['_role']['read']) {
+	public function index()
+	{
+		if (!(int) $this->data['_role']['read']) {
 			$this->session->set_flashdata('error', 'This Perkembangan Baby is not allowed to load data!');
 			redirect('dashboard');
 		}
@@ -28,37 +31,9 @@ class Perkembangan extends CI_Controller {
 		$this->load->view('perkembangan/view', $this->data);
 	}
 
-	// public function add(){
-	// 	if(!(int)$this->data['_role']['create']) {
-	// 		$this->session->set_flashdata('error', 'This role is not allowed to add data!');
-	// 		redirect('dashboard');
-	// 	}
-
-	// 	$this->data['title'] = 'Add Role';
-	// 	$this->data['list_roles'] = $this->roles->read();
-
-	// 	$this->form_validation->set_rules('name', 'Role Name', 'required');
-	// 	$this->form_validation->set_error_delimiters('', '');
-
-	// 	if ($this->form_validation->run() == false) {
-	// 		$this->load->view('perkembangan/add', $this->data);
-	// 	} else {
-	// 		$data = [
-	// 			'name' => $this->input->post('name'),
-	// 		];
-
-	// 		if($this->roles->create($data)){
-	// 			$this->session->set_flashdata('success', 'Role added <strong>successfully</strong>');
-	// 			redirect('perkembangan');
-	// 		} else {
-	// 			$this->session->set_flashdata('error', 'Role <strong>failed</strong> to add');
-	// 			redirect('perkembangan');
-	// 		}
-	// 	}
-	// }
-
-	public function edit($id){
-		if(!(int)$this->data['_role']['update']) {
+	public function edit($id)
+	{
+		if (!(int) $this->data['_role']['update']) {
 			$this->session->set_flashdata('error', 'This Perkembangan Baby is not allowed to change data!');
 			redirect('dashboard');
 		}
@@ -78,7 +53,7 @@ class Perkembangan extends CI_Controller {
 				'tanggal' => $this->input->post('tanggal'),
 			];
 
-			if($this->perkembangan->update($data, $id)){
+			if ($this->perkembangan->update($data, $id)) {
 				$this->session->set_flashdata('success', 'Perkembangan Baby edited <strong>successfully</strong>');
 				redirect('perkembangan');
 			} else {
@@ -88,13 +63,14 @@ class Perkembangan extends CI_Controller {
 		}
 	}
 
-	public function delete($id){
-		if(!(int)$this->data['_role']['delete']) {
+	public function delete($id)
+	{
+		if (!(int) $this->data['_role']['delete']) {
 			$this->session->set_flashdata('error', 'This Perkembangan Baby is not allowed to delete data!');
 			redirect('dashboard');
 		}
 
-		if($this->perkembangan->delete($id)){
+		if ($this->perkembangan->delete($id)) {
 			$this->session->set_flashdata('success', 'Perkembangan Baby deleted <strong>successfully</strong>');
 			redirect('perkembangan');
 		} else {
@@ -103,13 +79,14 @@ class Perkembangan extends CI_Controller {
 		}
 	}
 
-	public function delete1($id){
-		if(!(int)$this->data['_role']['delete']) {
+	public function delete1($id)
+	{
+		if (!(int) $this->data['_role']['delete']) {
 			$this->session->set_flashdata('error', 'This Perkembangan Baby is not allowed to delete data!');
 			redirect('dashboard');
 		}
 
-		if($this->perkembangan->delete1($id)){
+		if ($this->perkembangan->delete1($id)) {
 			$this->session->set_flashdata('success', 'Perkembangan Baby deleted <strong>successfully</strong>');
 			redirect('perkembangan');
 		} else {
@@ -118,7 +95,8 @@ class Perkembangan extends CI_Controller {
 		}
 	}
 
-	public function history($id){
+	public function history($id)
+	{
 		$this->data['title'] = 'Data History';
 		$this->data['list_perkembangan'] = $this->perkembangan->read_by_id($id);
 		$this->data['nama_baby'] = $this->perkembangan->nama_baby($id);

@@ -1,13 +1,10 @@
 <?php
  class M_telenotif extends CI_Model {
  
-    public function __construct(){
-           parent::__construct();
-      }
+    protected $_table_notif = 'telenotif';
 
-    function getAllData()
+    function sendTele($data)
     {
-        $query=$this->db->query("SELECT * FROM telenotif");
-        return $query->result();
+		return $this->db->insert($this->_table_notif, $data);
     }
 }

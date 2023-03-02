@@ -50,6 +50,7 @@
 											<td><strong>Parent Name</strong></td>
 											<td><strong>Baby Name</strong></td>
 											<td><strong>Berat Baby Check Terakhir Kali</strong></td>
+											<td><strong>Tanggal</strong></td>
 											<?php if ($this->session->role == 'user'): ?>
 												<td> <strong>Action</strong></td>
 											<?php endif; ?>
@@ -72,7 +73,10 @@
 														<?= $perkembangan->nama_baby ?>
 													</td>
 													<td>
-														<?= $perkembangan->berat_bayi ?> KG
+														<?= $perkembangan->berat_bayi ?> G
+													</td>
+													<td>
+														<?= $perkembangan->tanggal ?> 
 													</td>
 													<td>
 														<a href="<?= base_url('perkembangan/history/' . $perkembangan->id_bayi) ?>"
@@ -93,7 +97,10 @@
 													<?= $perkembangan->nama_baby ?>
 												</td>
 												<td>
-													<?= $perkembangan->berat_bayi ?> KG
+													<?= $perkembangan->berat_bayi ?> G
+												</td>
+												<td>
+													<?= $perkembangan->tanggal ?> 
 												</td>
 
 												<?php if ((int) $_role['update'] || (int) $_role['delete']) { ?>

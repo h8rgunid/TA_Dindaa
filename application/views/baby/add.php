@@ -80,7 +80,7 @@
 													<select class="form-control " id="id" name="id" required>
 														<option value="">No Select</option>
 														<?php foreach ($baby_users as $parent): ?>
-															<option value="<?php echo $parent->id; ?>"><?php echo $parent->name; ?></option>
+															<option value="<?php echo $parent->id; ?>"><?php echo " Email: ",$parent->email," Name: ",$parent->name; ?></option>
 														<?php endforeach; ?>
 													</select>
 												</div>

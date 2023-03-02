@@ -14,7 +14,7 @@ class M_baby extends CI_Model{
 	}
 
 	public function group_by_user(){
-		$query = 'SELECT * FROM `baby` b, users u WHERE b.id_user = u.id group by u.id';
+		$query = 'SELECT * FROM users where role_id = 2';
 		return $this->db->query($query)->result();
 	}
 	public function read_per_id($id){

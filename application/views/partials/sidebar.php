@@ -22,17 +22,19 @@ else
 			Data Baby
 		</div>
 
-		<li class="nav-item <?= $active == 'baby' || $active == 'perkembangan' ? 'active' : '' ?>">
+		<li class="nav-item <?= $active == 'baby' || $active == 'perkembangan' || $active == 'notifikasi'? 'active' : '' ?>">
 			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#baby">
 				<i class="fas fa-fw fa-cogs"></i>
 				<span>Management Baby</span>
 			</a>
-			<div id="baby" class="collapse <?= $active == 'baby' || $active == 'perkembangan' ? 'show' : '' ?>">
+			<div id="baby" class="collapse <?= $active == 'baby' || $active == 'perkembangan' || $active == 'notifikasi'? 'show' : '' ?>">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<a class="collapse-item <?= $active == 'baby' ? 'active' : '' ?>"
 						href="<?= base_url('baby') ?>">Timbangan Bayi</a>
 					<a class="collapse-item <?= $active == 'perkembangan' ? 'active' : '' ?>"
 						href="<?= base_url('perkembangan') ?>">Cek Perkembangan Bayi</a>
+					<a class="collapse-item <?= $active == 'notifikasi' ? 'active' : '' ?>"
+						href="<?= base_url('notifikasi') ?>">Jadwal Posyandu</a>
 				</div>
 			</div>
 		</li>
